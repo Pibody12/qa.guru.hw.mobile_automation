@@ -1,9 +1,8 @@
-package tests;
+package base;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import drivers.BrowserstackAndroidDriver;
 import drivers.BrowserstackIosDriver;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;

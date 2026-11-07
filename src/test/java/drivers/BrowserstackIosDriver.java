@@ -24,8 +24,6 @@ public class BrowserstackIosDriver implements WebDriverProvider {
         caps.setCapability("appium:platformVersion", "16");
         caps.setCapability("appium:automationName", "XCUITest");
         caps.setCapability("appium:app", "bs://sample.app");
-//        Для новой версии вики
-//        caps.setCapability("appium:app", "bs://206d07292e9b4056d5d41f099ebbc79aa9360185");
 
         HashMap<String, Object> bstackOptions = new HashMap<>();
 
@@ -38,8 +36,6 @@ public class BrowserstackIosDriver implements WebDriverProvider {
 
         caps.setCapability("bstack:options", bstackOptions);
 
-        // Initialise the remote Webdriver using BrowserStack remote URL
-        // and desired capabilities defined above
         try {
             return new IOSDriver(
                     new URL("https://hub.browserstack.com/wd/hub"), caps);

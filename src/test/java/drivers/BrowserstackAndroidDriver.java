@@ -1,6 +1,8 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import config.AuthConfig;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
 import io.appium.java_client.android.AndroidDriver;
@@ -12,6 +14,8 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class BrowserstackAndroidDriver implements WebDriverProvider {
+
+     AuthConfig authConfig = ConfigFactory.create(AuthConfig.class, System.getProperties());
 
     @Nonnull
     @Override
@@ -27,18 +31,14 @@ public class BrowserstackAndroidDriver implements WebDriverProvider {
 //        caps.setCapability("appium:app", "bs://206d07292e9b4056d5d41f099ebbc79aa9360185");
 
         HashMap<String, Object> bstackOptions = new HashMap<>();
-
-        bstackOptions.put("userName", System.getProperty("user_name"));
+        bstackOptions.put("userName", authConfig.getUsername());
         bstackOptions.put("accessKey", System.getProperty("access_key"));
         bstackOptions.put("appiumVersion", "2.12.1");
         bstackOptions.put("projectName", "First Java Project");
         bstackOptions.put("buildName", "browserstack-build-1");
         bstackOptions.put("sessionName", "first_test");
-
         caps.setCapability("bstack:options", bstackOptions);
 
-        // Initialise the remote Webdriver using BrowserStack remote URL
-        // and desired capabilities defined above
         try {
             return new AndroidDriver(
                     new URL(System.getProperty("browserstack_url")), caps);
