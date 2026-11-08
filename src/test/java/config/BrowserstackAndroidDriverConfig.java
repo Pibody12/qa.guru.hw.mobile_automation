@@ -3,7 +3,7 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:config/Browserstack-Android.properties"
+        "classpath:Browserstack-Android.properties"
 })
 
 public interface BrowserstackAndroidDriverConfig extends Config {
@@ -32,11 +32,7 @@ public interface BrowserstackAndroidDriverConfig extends Config {
     @DefaultValue("android test")
     String getSessionName();
 
-    @Key("driver.version")
-    @DefaultValue("AndroidDriver")
-    String getDriverVersion();
-
     @Key("browserstack.hub")
     @DefaultValue("https://hub.browserstack.com/wd/hub")
-    String getBrowserstackUrl();
+    String getBrowserstackHub();
 }
