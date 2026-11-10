@@ -3,7 +3,7 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:${device}.properties"
+        "classpath:${device_android}.properties"
 })
 
 public interface AndroidDeviceConfig extends Config{
